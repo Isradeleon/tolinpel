@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+// RUTAS PRODUCTOS
+Route::get('lista_productos/{tipo}','ProductosController@lista_productos');
+Route::get('producto/{id}','ProductosController@producto');
+Route::post('comprar/{id}','ProductosController@comprar');
