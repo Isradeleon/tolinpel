@@ -7,6 +7,15 @@ use App\Producto;
 
 class ProductosController extends Controller
 {
+    public function index(Request $request){
+        $productos_stock = Producto::orderBy('existencia','desc')->take(4)->get();
+        $productos_destacados = Producto::orderBy('existencia')->take(4)->get();
+        return view('home',[
+            "productos_stock"=>$productos_stock,
+            "productos_destacados"=>$productos_destacados
+        ]);
+    }
+
     public function lista_productos(Request $request, $tipo){
     	$productos = Producto::where('tipo',$tipo)->where('existencia','>',0)->get();
     	if (count( $productos ) > 0) {

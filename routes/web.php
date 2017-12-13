@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/','ProductosController@index');
 
 // RUTAS PRODUCTOS
 Route::get('lista_productos/{tipo}','ProductosController@lista_productos');

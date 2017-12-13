@@ -12,7 +12,6 @@
 	background-position:center center; 
 	background-size: auto 335px;
 	background-color: #fefefe;
-	/*border:1px #424242 solid;*/
 	margin:auto !important;
 	background-repeat: no-repeat;
 }
@@ -29,7 +28,7 @@
 	        <div class="cell datos_producto">
 	            <h2><strong>{{ $producto->nombre }}</strong></h2>
 	            <hr>
-	            <h4><strong>Costo:</strong> $ {{$producto->costo}} MXN</h4>
+	            <h4><strong>Costo:</strong> <del>$ {{$producto->costo}}</del> MXN</h4>
 	            <h4><strong>Descuento:</strong> %{{$producto->descuento}}</h4>
 	            <h4><strong>Marca:</strong> {{$producto->marca}}</h4>
 	            <h4><strong>Costo ahora:</strong> $ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN <br><small><i class="fa fa-money"></i> Te ahorras $ {{ $producto->costo * ( $producto->descuento * 0.01 ) }} MXN!</small></h4>
@@ -39,17 +38,20 @@
 	</div>
 </section>
 
-<div class="dialog" data-overlay="true" data-overlay-click-close="true" data-close-button="true" data-role="dialog" id="dialog">
+<div class="dialog" data-overlay="true" data-overlay-click-close="true" data-close-button="true" data-role="dialog" id="dialog" data-overlay-color="op-dark">
     <h1>Comprar</h1>
     <p>
         <form action="/comprar" method="post">
+        	{{csrf_field()}}
+        	
         	<input type="hidden" name="producto_id" value="{{ $producto->id }}">
-        	<label>Número de tarjeta:</label>
+        	
+        	<label><i class="fa fa-credit-card-alt"></i> Número de tarjeta:</label>
         	<div class="input-control text full-size">
-			    <input autofocus type="text" name="">
+			    <input autofocus type="text" name="numero_tarjeta">
 			</div>
 
-			<label>Tipo:</label>
+			<label><i class="fa fa-cc"></i> Tipo:</label>
 			<div class="input-control select full-size">
 			    <select class="marca_tarjeta">
 			        <option value="1">VISA</option>
@@ -57,16 +59,23 @@
 			    </select>
 			</div>
 
-			<label>Tipo de tarjeta:</label>
+			<label><i class="fa fa-bank"></i> Tipo de tarjeta:</label>
 			<div class="input-control select full-size">
-			    <select class="marca_tarjeta">
+			    <select class="tipo_tarjeta">
 			        <option value="1">Crédito</option>
 			        <option value="2">Débito</option>
 			    </select>
 			</div>
+
+			<label><i class="fa fa-lock"></i> Pin:</label>
+        	<div class="input-control text full-size">
+			    <input type="text" name="pin">
+			</div>
         </form>
     </p>
 </div>
+
+<!-- <div class="dialog-overlay op-dark"></div> -->
 @endsection
 
 @section('js')

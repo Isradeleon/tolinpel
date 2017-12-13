@@ -19,15 +19,17 @@
 		.dialog{
 			padding:20px;
 		}
+		.op-dark{
+			background-color: rgba(29, 29, 29, 0.7);
+		}
 	</style>
 	@yield('css')
 </head>
 <body>
-<div class="app-bar darcula">
-	 {{-- <a class="app-bar-element"><span class=""></span></a> --}}
-	<ul class="app-bar-menu">
-        <li><a  class="logo"  href="/"><strong>Tolinpel</strong></a></li>
-        <span class="app-bar-divider"></span>
+<div class="app-bar darcula" data-role="appbar">
+    <a class="app-bar-element" href="/"><i class="fa fa-shopping-cart"></i> Tolinpel</a>
+    <span class="app-bar-divider"></span>
+    <ul class="app-bar-menu">
         <li><a href="/lista_productos/1">Celulares</a></li>
         <li><a href="/lista_productos/2">Tablets</a></li>
         <li><a href="/lista_productos/3">Consolas</a></li>

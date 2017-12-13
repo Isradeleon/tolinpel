@@ -5,24 +5,32 @@
     <div class="grid">
         <div class="row cells2">
             <div class="cell">
-                <div class="carousel square-bullets" data-role="carousel" data-direction="right">
-                    <div class="slide"><img src="img/1.jpg" data-role="fitImage" data-format="fill"></div>
-                    <div class="slide"><img src="img/2.jpg" data-role="fitImage" data-format="fill"></div>
-                    <div class="slide"><img src="img/3.jpg" data-role="fitImage" data-format="fill"></div>
-                    <div class="slide"><img src="img/5.jpg" data-role="fitImage" data-format="fill"></div>
+                <div data-height="300" class="carousel square-bullets" data-role="carousel" data-direction="right">
+                   <!--  <div class="slide"><img src="img/1.jpg" data-role="fitImage" data-format="fill"></div>
+                    <div class="slide"><img src="img/2.jpg" data-role="fitImage" data-format="fill"></div> -->
+                    @foreach($productos_stock as $producto)
+                        <div class="slide">
+                            <div class="image-container image-format-fill" style="width: 100%; height: 100%;">
+                                <div class="frame">
+                                    <div style="width: 100%; height: 100%; background-image: url({{$producto->imagen}}); background-position: center center; background-size: auto 101%; background-repeat: no-repeat; border-radius: 0px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="cell">
-    		    <div>
-    				<h2>Bienvenido a <strong>Tolinpel</strong><br><small>¡Mejora tu vida!</small></h2>
-    				<br>
-    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sunt magni, excepturi necessitatibus rem numquam officiis temporibus voluptatem odio odit ratione perferendis quos! Soluta explicabo, repellat eius. Tempore, magni, a!</p>
-    				<p>Voluptatum tempora harum fugit quo sapiente eos, blanditiis tempore dolorem incidunt doloribus odio beatae est, saepe temporibus? Ea.</p>
-    			</div>
+				<h1>Bienvenido a <strong>Tolinpel</strong><br><small>¡Mejora tu vida!</small></h1>
+				<br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur sunt magni, excepturi necessitatibus rem numquam officiis temporibus voluptatem odio odit ratione perferendis quos! Soluta explicabo, repellat eius. Tempore, magni, a!</p>
             </div>
         </div>
-        <div class="row">
-            
+        <div class="row cells4">
+            <hr><br>
+            <h2 class="title is-2">Destacados</h2>
+            @foreach($productos_destacados as $producto)
+                
+            @endforeach
         </div>
     </div>
 </section>
