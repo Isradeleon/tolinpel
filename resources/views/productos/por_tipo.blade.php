@@ -9,7 +9,7 @@
 		<a href="/producto/{{$producto->id}}" class="tile tile-wide-x tile-wide-y producto_comprar">
             <div class="tile-content slide-up">
                 <div class="slide">
-                   <div><img src="img/LGprime.jpg" alt=""></div>
+                   <img src="{{$producto->imagen}}" alt="">
                 </div>
                 <div class="slide-over">
                 	<h3>

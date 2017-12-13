@@ -24,15 +24,15 @@
 	<div class="grid">
 	    <div class="row cells2">
 	        <div class="cell imagen_producto">
-	        	<div style="background-image: url(http://lorempixel.com/560/500/);" id="imagen_producto"></div>
-	        	<!-- <img src="http://lorempixel.com/240/500/"> -->
+	        	<div style="background-image: url({{$producto->imagen}});" id="imagen_producto"></div>
 	         </div>
 	        <div class="cell datos_producto">
 	            <h2><strong>{{ $producto->nombre }}</strong></h2>
 	            <hr>
 	            <h4><strong>Costo:</strong> $ {{$producto->costo}} MXN</h4>
 	            <h4><strong>Descuento:</strong> %{{$producto->descuento}}</h4>
-	            <h4><strong>Costo ahora:</strong> $ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN <br><small><i class="fa fa-money"></i> Te ahorras {{ $producto->costo * ( $producto->descuento * 0.01 ) }}</small></h4>
+	            <h4><strong>Marca:</strong> {{$producto->marca}}</h4>
+	            <h4><strong>Costo ahora:</strong> $ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN <br><small><i class="fa fa-money"></i> Te ahorras $ {{ $producto->costo * ( $producto->descuento * 0.01 ) }} MXN!</small></h4>
 	            <br><button id="comprar" class="button success block-shadow-success text-shadow"><i class="fa fa-shopping-cart"></i> COMPRAR AHORA</button>
 	        </div>
 	    </div>

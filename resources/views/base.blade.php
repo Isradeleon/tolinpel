@@ -14,7 +14,7 @@
 			padding: 10px;
 		}
 		#main{
-			padding-top: 30px;
+			padding-top: 40px;
 		}
 		.dialog{
 			padding:20px;
@@ -23,13 +23,10 @@
 	@yield('css')
 </head>
 <body>
-<div class="logo">
-	<img src="img/logo.png" alt="">
-</div>
 <div class="app-bar darcula">
 	 {{-- <a class="app-bar-element"><span class=""></span></a> --}}
 	<ul class="app-bar-menu">
-        <li><a href="/"><img src="img/logo.png" alt=""></a></li>
+        <li><a  class="logo"  href="/"><strong>Tolinpel</strong></a></li>
         <span class="app-bar-divider"></span>
         <li><a href="/lista_productos/1">Celulares</a></li>
         <li><a href="/lista_productos/2">Tablets</a></li>
