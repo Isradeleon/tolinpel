@@ -22,12 +22,23 @@
 		.op-dark{
 			background-color: rgba(29, 29, 29, 0.7);
 		}
+		.logo{
+			text-align: center;
+		}
+		.footer{
+			text-align: center;
+			padding: 30px;
+			display: block;
+		}
 	</style>
 	@yield('css')
 </head>
 <body>
+<div class="logo">
+	<a href="/"><img style="width: auto; max-height: 150px; padding: 10px;" src="/imgs/logo.png"></a>
+</div>
 <div class="app-bar darcula" data-role="appbar">
-    <a class="app-bar-element" href="/"><i class="fa fa-shopping-cart"></i> Tolinpel</a>
+    <a href="/" class="app-bar-element"><i class="fa fa-shopping-cart"></i> Tolinpel</a>
     <span class="app-bar-divider"></span>
     <ul class="app-bar-menu">
         <li><a href="/lista_productos/1">Celulares</a></li>
@@ -39,9 +50,12 @@
         <li><a href="/lista_productos/7">Fotos e impresoras</a></li>
     </ul>
 </div>
-<section id="main">
-	@yield('content')
-</section>
+	<section id="main">
+		@yield('content')
+	</section>
+	<br>
+	<div class="footer"><small><i class="fa fa-copyright"></i> Copyright Tolinpel 2017. Todos los derechos robados.</small></div>
+
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/metro.min.js"></script>
 	@yield('js')

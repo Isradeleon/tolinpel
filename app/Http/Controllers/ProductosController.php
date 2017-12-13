@@ -9,7 +9,7 @@ class ProductosController extends Controller
 {
     public function index(Request $request){
         $productos_stock = Producto::orderBy('existencia','desc')->take(4)->get();
-        $productos_destacados = Producto::orderBy('existencia')->take(4)->get();
+        $productos_destacados = Producto::where('existencia','>','0')->orderBy('existencia')->take(3)->get();
         return view('home',[
             "productos_stock"=>$productos_stock,
             "productos_destacados"=>$productos_destacados
