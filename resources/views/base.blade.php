@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Tolinpel</title>
-	<link rel="stylesheet" type="text/css" href="/css/icons/css/font-awesome.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="/css/icons/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="/css/metro.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/metro-icons.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/metro-responsive.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/metro-schemes.min.css">
+	<link rel="icon" href="/imgs/icono.png">
 	<style type="text/css">
 		.slide-over{
 			padding: 10px;
@@ -38,7 +40,7 @@
 	<a href="/"><img style="width: auto; max-height: 150px; padding: 10px;" src="/imgs/logo.png"></a>
 </div>
 <div class="app-bar darcula" data-role="appbar">
-    <a href="/" class="app-bar-element"><i class="fa fa-shopping-cart"></i> Tolinpel</a>
+    <a href="/" class="app-bar-element"><span class="mif-cart mif-lg"></span> Tolinpel</a>
     <span class="app-bar-divider"></span>
     <ul class="app-bar-menu">
         <li><a href="/lista_productos/1">Celulares</a></li>
@@ -54,7 +56,7 @@
 		@yield('content')
 	</section>
 	<br>
-	<div class="footer"><small><i class="fa fa-copyright"></i> Copyright Tolinpel 2017. Todos los derechos robados.</small></div>
+	<div class="footer"><small><span class="mif-copyright"></span> Copyright Tolinpel 2017. Todos los derechos robados.</small></div>
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/metro.min.js"></script>

@@ -15,6 +15,9 @@
 	margin:auto !important;
 	background-repeat: no-repeat;
 }
+.calendar{
+	margin-bottom: 10px;
+}
 </style>
 @endsection
 
@@ -28,54 +31,81 @@
 	        <div class="cell datos_producto">
 	            <h2><strong>{{ $producto->nombre }}</strong></h2>
 	            <hr>
-	            <h4><strong>Costo:</strong> <del>$ {{$producto->costo}}</del> MXN</h4>
+	            <h4><strong>Costo:</strong> <del>$ {{$producto->costo}} MXN</del></h4>
 	            <h4><strong>Descuento:</strong> %{{$producto->descuento}}</h4>
 	            <h4><strong>Marca:</strong> {{$producto->marca}}</h4>
-	            <h4><strong>Costo ahora:</strong> $ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN <br><small><i class="fa fa-money"></i> Te ahorras $ {{ $producto->costo * ( $producto->descuento * 0.01 ) }} MXN!</small></h4>
-	            <br><button id="comprar" class="button success block-shadow-success text-shadow"><i class="fa fa-shopping-cart"></i> COMPRAR AHORA</button>
+	            <h4><strong><span class="mif mif-tag"></span> Costo ahora:</strong> $ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN <br><br><small><span class="mif-dollars mif-lg"></span> Te ahorras $ {{ $producto->costo * ( $producto->descuento * 0.01 ) }} MXN!</small></h4>
+	            <br><button id="comprar" class="button success block-shadow-success text-shadow"><span class="mif-cart"></span> COMPRAR AHORA</button>
 	        </div>
 	    </div>
 	</div>
 </section>
 
-<div class="dialog" data-overlay="true" data-overlay-click-close="true" data-close-button="true" data-role="dialog" id="dialog" data-overlay-color="op-dark">
+<div style="overflow-y: auto;" class="dialog" data-overlay="true" data-overlay-click-close="true" data-close-button="true" data-role="dialog" id="dialog" data-overlay-color="op-dark">
     <h1>Comprar</h1>
-    <p>
-        <form action="/comprar" method="post">
+    <hr>
+    <form action="/comprar" method="post">
         	{{csrf_field()}}
-        	
-        	<input type="hidden" name="producto_id" value="{{ $producto->id }}">
-        	
-        	<label><i class="fa fa-credit-card-alt"></i> Número de tarjeta:</label>
-        	<div class="input-control text full-size">
-			    <input autofocus type="text" name="numero_tarjeta">
-			</div>
+	    <div class="grid">
+	    	<div class="row">
+	    		<label><span class="mif-user"></span> Cliente:</label>
+	        	<div class="input-control text full-size">
+				    <input disabled value="CLIENTE FUNDADOR" type="text" name="cliente">
+				</div>
+	    	</div>
 
-			<label><i class="fa fa-cc"></i> Tipo:</label>
-			<div class="input-control select full-size">
-			    <select class="marca_tarjeta">
-			        <option value="1">VISA</option>
-			        <option value="2">MasterCard</option>
-			    </select>
-			</div>
+	    	<div class="row">
+	    		<label><span class="mif-credit-card"></span> Número de tarjeta:</label>
+	        	<div class="input-control text full-size">
+				    <input type="text" name="numero_tarjeta">
+				</div>
+	    	</div>
 
-			<label><i class="fa fa-bank"></i> Tipo de tarjeta:</label>
-			<div class="input-control select full-size">
-			    <select class="tipo_tarjeta">
-			        <option value="1">Crédito</option>
-			        <option value="2">Débito</option>
-			    </select>
-			</div>
+	    	<div class="row">
+	    		<label><i class="fa fa-bank"></i> Tipo de tarjeta:</label>
+				<div class="input-control select full-size">
+				    <select class="tipo_tarjeta">
+				        <option value="1">Crédito</option>
+				        <option value="2">Débito</option>
+				    </select>
+				</div>
+	    	</div>
 
-			<label><i class="fa fa-lock"></i> Pin:</label>
-        	<div class="input-control text full-size">
-			    <input type="text" name="pin">
-			</div>
-        </form>
-    </p>
+	    	<div class="row">
+	    		<label class="input-control radio small-check">
+				    <input checked name="marca_tarjeta" value="1" type="radio">
+				    <span class="check"></span>
+				    <span class="caption"><span class="mif-visa mif-2x"></span> VISA</span>
+				</label>
+				<label class="input-control radio small-check">
+				    <input name="marca_tarjeta" value="2" type="radio">
+				    <span class="check"></span>
+				    <span class="caption"><span class="mif-mastercard mif-2x"></span> MasterCard</span>
+				</label>
+	    	</div>
+
+	    	<div class="row">
+	    		<label><span class="mif-lock"></span> Pin:</label>
+	        	<div class="input-control text full-size">
+				    <input type="text" name="pin">
+				</div>
+	    	</div>
+
+	    	<div class="row">
+	    		<label>Expedición:</label>
+	    		<div class="input-control text full-size" data-role="datepicker">
+				    <input name="fecha_expedicion" type="text">
+				    <button class="button"><span class="mif-calendar"></span></button>
+				</div>
+				<br>
+	    	</div>
+
+	    	<div class="row">
+	    		<button class="button success block-shadow-success full-size"><span class="mif-checkmark"></span> COMPRAR</button>
+	    	</div>
+	    </div>
+	</form>
 </div>
-
-<!-- <div class="dialog-overlay op-dark"></div> -->
 @endsection
 
 @section('js')
