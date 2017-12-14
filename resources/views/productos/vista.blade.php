@@ -41,7 +41,7 @@
 	            <h4><strong>Costo:</strong> <del>$ {{$producto->costo}} MXN</del></h4>
 	            <h4><strong>Descuento:</strong> %{{$producto->descuento}}</h4>
 	            <h4><strong>Marca:</strong> {{$producto->marca}}</h4>
-	            <h4><strong><span class="mif mif-tag"></span> Costo ahora:</strong> $ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN <br><br><small><span class="mif-dollars mif-lg"></span> Te ahorras $ {{ $producto->costo * ( $producto->descuento * 0.01 ) }} MXN!</small></h4>
+	            <h4><strong><span class="mif mif-tag"></span> Costo ahora:</strong> $ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN <br><br><small><span class="mif-dollars mif-lg"></span> Te ahorras $ {{ $producto->costo * ( $producto->descuento * 0.01 ) }} MXN!</small><br><small><span class="mif-stack2 mif-lg"></span> {{$producto->existencia}} en stock</small></h4>
 	            <br><button id="comprar" class="button success block-shadow-success text-shadow"><span class="mif-cart"></span> COMPRAR AHORA</button>
 	        </div>
 	    </div>
@@ -144,5 +144,19 @@
 	<script type="text/javascript">
 		metroDialog.open('#dialog')
 	</script>
+	@endif
+
+	@if(session('message'))
+	    <script type="text/javascript">
+	    	$(function(){
+		    	$.Notify({
+				    caption: 'Mensaje',
+				    content: '{{session("message")}}',
+				    type: '{{session("type_msg")}}',
+				    keepOpen: true,
+				    icon: "<span class='mif-{{session('icon')}}'></span>"
+				})
+	    	})
+	    </script>
 	@endif
 @endsection

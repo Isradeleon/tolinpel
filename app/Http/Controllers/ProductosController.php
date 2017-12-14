@@ -110,10 +110,19 @@ class ProductosController extends Controller
             $compra_url=str_replace(" ", "_", $compra_url);
             
             $json = json_decode(file_get_contents($compra_url), true);
+            $type="alert";
+            $icon="warning";
             if ($json['result']) {
-                
+                $producto->existencia = $producto->existencia-1;
+                $producto->save();
+                $type="success";
+                $icon="checkmark";
             }
-            return $json;
+
+            return back()
+            ->with('type_msg',$type)
+            ->with('icon', $icon)
+            ->with('message',$json['message']);
     	}
     	return [
     		"result" => false
