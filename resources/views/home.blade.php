@@ -2,6 +2,7 @@
 
 @section('content')
 <section class="container">
+    <hr>
     <div class="grid">
         <div class="row cells2">
             <div class="cell">
@@ -19,13 +20,13 @@
                 <br>
             </div>
             <div style="padding: 20px; text-align: center;" class="cell">
-				<h1>Bienvenido a <strong>Tolinpel</strong><br><small>¡Mejoramos tu vida!</small></h1>
+				<h1>Bienvenido a <strong>Tolinpel</strong><br><small><span class="mif-key"></span> ¡Mejoramos tu vida!</small></h1>
 				<br>
-				<p>Aquí podrás encontrar toda clase de productos y electrodomésticos para comprar para tu hogar. ¡Nos gusta ofrecerte lo mejor de las mejores marcas al mejor de los precios! Ven y aprovecha nuestros descuentos de Diciembre.</p>
+				<p>Aquí podrás encontrar toda clase de productos y electrodomésticos para comprar para tu hogar. ¡Nos gusta ofrecerte lo mejor de las mejores marcas, al mejor de los precios! Ven y aprovecha nuestros descuentos de Diciembre.</p>
             </div>
         </div>
         <hr><br>
-        <h2>Destacados</h2>
+        <h2>Ventas destacadas</h2>
         <h5>Productos apunto de agotarse:</h5>
         <br>
         <div class="row">
