@@ -43,7 +43,7 @@
 	<a href="/"><img style="width: auto; max-height: 120px; padding: 10px;" src="/imgs/logo.png"></a>
 </div>
 <div class="app-bar darcula" data-role="appbar">
-    <a href="/" class="app-bar-element"><span class="mif-cart mif-lg"></span> Tolinpel</a>
+    <a href="/" class="app-bar-element"><span class="mif-home"></span> Tolinpel</a>
     <span class="app-bar-divider"></span>
     <ul class="app-bar-menu">
         <li><a href="/lista_productos/1">Celulares</a></li>
