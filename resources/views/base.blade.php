@@ -32,6 +32,9 @@
 			padding: 30px;
 			display: block;
 		}
+		.slide-over, .slide-over small{
+			color:white;
+		}
 	</style>
 	@yield('css')
 </head>

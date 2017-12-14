@@ -17,10 +17,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slide-over">
-                        	<h3>
-                        		{{$producto->nombre}} <br><small>$ {{$producto->costo}} MXN</small>
-                        	</h3>
+                        <div class="slide-over op-dark">
+                            <h3>
+                                {{$producto->nombre}} <br>
+                                <small>
+                                    <del>$ {{$producto->costo}} MXN</del>
+                                </small>
+                            </h3>
+                            <h3>$ {{ $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) }} MXN</h3>
                         </div>
                     </div>
                 </a>

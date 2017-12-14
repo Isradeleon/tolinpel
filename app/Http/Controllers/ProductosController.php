@@ -115,6 +115,10 @@ class ProductosController extends Controller
             if ($json['result']) {
                 $producto->existencia = $producto->existencia-1;
                 $producto->save();
+                
+                if ($producto->existencia == 0)
+                    return redirect('/');
+
                 $type="success";
                 $icon="checkmark";
             }
