@@ -5,6 +5,7 @@
 	<h1>Productos disponibles</h1>
 	<hr>
 	<h3>{{$mostrar}}</h3>
+    <br>
     <div class="grid">
         <div class="row">
         	@foreach( $productos as $producto )

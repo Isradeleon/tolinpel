@@ -7,6 +7,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 // Class for the 404 error added
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,10 @@ class Handler extends ExceptionHandler
             return response()->view('errors.vista',[
                 "msg"=>"Página no encontrada."
             ]);
+        }
+
+        if($exception instanceof MethodNotAllowedHttpException) {
+            return redirect('/');
         }
         
         return parent::render($request, $exception);

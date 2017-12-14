@@ -27,6 +27,7 @@
         <hr><br>
         <h2>Destacados</h2>
         <h5>Productos apunto de agotarse:</h5>
+        <br>
         <div class="row">
             @foreach($productos_destacados as $producto)
                 <a href="/producto/{{$producto->id}}" class="tile tile-wide-x tile-wide-y producto_comprar">
