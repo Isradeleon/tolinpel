@@ -5,7 +5,7 @@
     <div class="grid">
         <div class="row cells2">
             <div class="cell">
-                <div data-height="300" class="carousel" data-role="carousel" data-direction="right">
+                <div data-effect="fade" data-height="300" class="carousel" data-role="carousel" data-direction="right">
                     @foreach($productos_stock as $producto)
                         <div class="slide">
                             <div class="image-container image-format-fill" style="width: 100%; height: 100%;">
