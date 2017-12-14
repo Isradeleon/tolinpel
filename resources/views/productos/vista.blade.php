@@ -4,7 +4,7 @@
 <style type="text/css">
 
 .datos_producto,.imgaen_producto{
-	padding: 20px;
+	padding: 10px;
 }
 #imagen_producto{
 	height: 330px;
@@ -27,6 +27,7 @@
 	    <div class="row cells2">
 	        <div class="cell imagen_producto">
 	        	<div style="background-image: url({{$producto->imagen}});" id="imagen_producto"></div>
+	        	<br><br>
 	         </div>
 	        <div class="cell datos_producto">
 	            <h2><strong>{{ $producto->nombre }}</strong></h2>

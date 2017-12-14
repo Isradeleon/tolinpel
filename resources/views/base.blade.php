@@ -37,7 +37,7 @@
 </head>
 <body>
 <div class="logo">
-	<a href="/"><img style="width: auto; max-height: 150px; padding: 10px;" src="/imgs/logo.png"></a>
+	<a href="/"><img style="width: auto; max-height: 120px; padding: 10px;" src="/imgs/logo.png"></a>
 </div>
 <div class="app-bar darcula" data-role="appbar">
     <a href="/" class="app-bar-element"><span class="mif-cart mif-lg"></span> Tolinpel</a>
