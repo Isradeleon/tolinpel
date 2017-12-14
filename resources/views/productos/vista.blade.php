@@ -2,7 +2,6 @@
 
 @section('css')
 <style type="text/css">
-
 .datos_producto,.imgaen_producto{
 	padding: 10px;
 }
@@ -17,6 +16,13 @@
 }
 .calendar{
 	margin-bottom: 10px;
+}
+.error{
+	color: #ce352c;
+	padding-bottom: 15px;
+}
+.dialog{
+	max-height: 100%;
 }
 </style>
 @endsection
@@ -46,7 +52,8 @@
     <h1>Comprar</h1>
     <hr>
     <form action="/comprar" method="post">
-        	{{csrf_field()}}
+    	<input type="hidden" name="producto_id" value="{{$producto->id}}">
+        {{csrf_field()}}
 	    <div class="grid">
 	    	<div class="row">
 	    		<label><span class="mif-user"></span> Cliente:</label>
@@ -58,14 +65,19 @@
 	    	<div class="row">
 	    		<label><span class="mif-credit-card"></span> Número de tarjeta:</label>
 	        	<div class="input-control text full-size">
-				    <input type="text" name="numero_tarjeta">
+				    <input value="{{old('numero_tarjeta')}}" type="text" name="numero_tarjeta">
 				</div>
+		    	@if($errors->has('numero_tarjeta'))
+					<div class="error">
+						{{ $errors->first('numero_tarjeta') }}
+					</div>
+				@endif
 	    	</div>
 
 	    	<div class="row">
 	    		<label><i class="fa fa-bank"></i> Tipo de tarjeta:</label>
 				<div class="input-control select full-size">
-				    <select class="tipo_tarjeta">
+				    <select name="tipo_tarjeta">
 				        <option value="1">Crédito</option>
 				        <option value="2">Débito</option>
 				    </select>
@@ -88,8 +100,13 @@
 	    	<div class="row">
 	    		<label><span class="mif-lock"></span> Pin:</label>
 	        	<div class="input-control text full-size">
-				    <input type="text" name="pin">
+				    <input value="{{old('pin')}}" type="text" name="pin">
 				</div>
+				@if($errors->has('pin'))
+					<div class="error">
+						{{ $errors->first('pin') }}
+					</div>
+				@endif
 	    	</div>
 
 	    	<div class="row">
@@ -98,6 +115,11 @@
 				    <input name="fecha_expedicion" type="text">
 				    <button class="button"><span class="mif-calendar"></span></button>
 				</div>
+				@if($errors->has('fecha_expedicion'))
+					<div class="error">
+						{{ $errors->first('fecha_expedicion') }}
+					</div>
+				@endif
 				<br>
 	    	</div>
 
@@ -110,11 +132,17 @@
 @endsection
 
 @section('js')
-<script type="text/javascript">
-$(function(){
-	$('#comprar').on('click',function(){
+	<script type="text/javascript">
+		$(function(){
+			$('#comprar').on('click',function(){
+				metroDialog.open('#dialog')
+			})
+		})
+	</script>
+
+	@if($errors->any())
+	<script type="text/javascript">
 		metroDialog.open('#dialog')
-	})
-})
-</script>
+	</script>
+	@endif
 @endsection

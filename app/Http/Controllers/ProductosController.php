@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Producto;
+use Validator;
 
 class ProductosController extends Controller
 {
@@ -49,7 +50,9 @@ class ProductosController extends Controller
                 "mostrar" => $mostrar
     		]);
     	}
-    	return "No hay productos de ese tipo";
+    	return view('errors.vista',[
+            "msg" => "No hay registro de productos."
+        ]);
     }
 
     public function producto(Request $request, $id){
@@ -59,15 +62,58 @@ class ProductosController extends Controller
     			"producto" => $producto
     		]);
     	}
-    	return "No se ha encontrado ese producto";
+    	return view('errors.vista',[
+            "msg" => "Producto no encontrado."
+        ]);
     }
 
     public function comprar(Request $request){
     	$producto = Producto::find($request['producto_id']);
-    	if ($producto) {
-    		return [
-	    		"result" => true
-	    	];
+    	if ($producto && $producto->existencia > 0) {
+            $rules=[
+                "numero_tarjeta"=>"required|digits:16",
+                "pin"=>"required|digits:3",
+                "fecha_expedicion"=>"required"
+            ];
+
+            $trad=[
+                'numero_tarjeta.required' => 'Indique el número de tarjeta.',
+                'numero_tarjeta.digits' => 'Proporcione 16 dígitos (0-9).',
+                'pin.required'  => 'Indique el PIN.',
+                'pin.digits'  => 'Proporcione 3 dígitos (0-9).',
+                'fecha_expedicion.required'  => 'Indique la expedición.'
+            ];
+            $request['fecha_expedicion']=str_replace(".", "_", $request['fecha_expedicion']);
+            
+            $validation=Validator::make($request->all(),$rules,$trad);
+            if ($validation->fails()) {
+                return back()
+                ->withInput($request->only(['numero_tarjeta','pin']))
+                ->withErrors($validation);
+            }
+
+            $compra_url = 'http://127.0.0.1:8001/transaction/'.
+                $request['numero_tarjeta']
+                .'/'.
+                $request['pin']
+                .'/'.
+                $request['fecha_expedicion']
+                .'/'.
+                $request['marca_tarjeta']
+                .'/'.
+                $request['tipo_tarjeta']
+                .'/'.
+                ( $producto->costo - ( $producto->costo * ( $producto->descuento * 0.01 ) ) )
+                .'/'.
+                $producto->nombre;
+
+            $compra_url=str_replace(" ", "_", $compra_url);
+            
+            $json = json_decode(file_get_contents($compra_url), true);
+            if ($json['result']) {
+                
+            }
+            return $json;
     	}
     	return [
     		"result" => false
