@@ -116,11 +116,14 @@ class ProductosController extends Controller
                 $producto->existencia = $producto->existencia-1;
                 $producto->save();
                 
-                if ($producto->existencia == 0)
-                    return redirect('/');
-
                 $type="success";
                 $icon="checkmark";
+                
+                if ($producto->existencia == 0)
+                    return redirect('/')
+                    ->with('type_msg',$type)
+                    ->with('icon', $icon)
+                    ->with('message',$json['message']);
             }
 
             return back()

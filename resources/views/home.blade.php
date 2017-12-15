@@ -56,3 +56,19 @@
     </div>
 </section>
 @endsection
+
+@if(session('message'))
+    @section('js')
+        <script type="text/javascript">
+            $(function(){
+                $.Notify({
+                    caption: 'Mensaje',
+                    content: '{{session("message")}}',
+                    type: '{{session("type_msg")}}',
+                    keepOpen: true,
+                    icon: "<span class='mif-{{session('icon')}}'></span>"
+                })
+            })
+        </script>
+    @endsection
+@endif
